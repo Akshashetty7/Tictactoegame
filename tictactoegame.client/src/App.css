@@ -1,0 +1,55 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: lightblue; /* Full-page background color */
+}
+
+.container {
+    padding: 20px; /* Adjust as needed */
+}
+
+.text {
+    color: #333; /* Adjust text color if needed */
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 56px); /* Adjust for navbar height */
+}
+.about-container {
+    text-align: center;
+    padding: 20px;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+}
+.cell {
+    width: 100px;
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 1px solid #000;
+    cursor: pointer;
+}
+.cell.disabled {
+    pointer-events: none;
+    background-color: #ddd;
+}
+.winner-message {
+    font-size: 20px;
+    margin: 10px 0;
+}
+.reset-button {
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
