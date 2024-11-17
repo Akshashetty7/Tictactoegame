@@ -1,19 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const About: React.FC = () => {
-    const [board, setBoard] = useState(Array(9).fill(null)); // 3x3 board
-    const [isXTurn, setIsXTurn] = useState(true); // Track turns
+const About = () => {
+    const [board, setBoard] = useState(Array(9).fill(null));
+    const [isXTurn, setIsXTurn] = useState(true);
     const [winner, setWinner] = useState<string | null>(null);
+    const [players, setPlayers] = useState({ playerX: '', playerO: '' });
 
-    //const token = localStorage.getItem('authToken');
-
-    //const response = await fetch('your-protected-api-url', {
-    //    method: 'GET',
-    //    headers: {
-    //        'Authorization': `Bearer ${token}`,
-    //    },
-    //});
-
+    // Fetch players from backend
+    useEffect(() => {
+        const fetchPlayers = async () => {
+            try {
+                const response = await fetch('http://localhost:5091/api/Users');
+                const data = await response.json();
+                setPlayers({ playerX: data[0].username, playerO: data[1].username });
+            } catch (error) {
+                console.error('Failed to fetch players', error);
+            }
+        };
+        fetchPlayers();
+    }, []);
 
     const checkWinner = (newBoard: string[]) => {
         const winningCombinations = [
@@ -36,9 +41,9 @@ const About: React.FC = () => {
 
         return newBoard.includes(null) ? null : 'Draw';
     };
-    
+
     const handleClick = (index: number) => {
-        if (board[index] || winner) return; // Prevent overwriting or playing after game over
+        if (board[index] || winner) return;
 
         const newBoard = [...board];
         newBoard[index] = isXTurn ? 'X' : 'O';
@@ -48,7 +53,7 @@ const About: React.FC = () => {
         if (result) {
             setWinner(result);
         } else {
-            setIsXTurn(!isXTurn); // Switch turns
+            setIsXTurn(!isXTurn);
         }
     };
 
@@ -56,15 +61,21 @@ const About: React.FC = () => {
         setBoard(Array(9).fill(null));
         setIsXTurn(true);
         setWinner(null);
-    }
+    };
+
     return (
-        <React.Fragment>
-           <h2>Tic Tac Toe Game</h2>
+        <div>
+            <h2>Tic Tac Toe Game</h2>
+            <div className="players-info">
+                <p>Player X: {players.playerX}</p>
+                <p>Player O: {players.playerO}</p>
+                <p>Current Turn: {isXTurn ? players.playerX : players.playerO}</p>
+            </div>
             <div className="board">
                 {board.map((cell, index) => (
-                    <div 
-                        key={index} 
-                        className={`cell ${cell ? 'disabled' : ''}`} 
+                    <div
+                        key={index}
+                        className={`cell ${cell ? 'disabled' : ''}`}
                         onClick={() => handleClick(index)}
                     >
                         {cell}
@@ -73,13 +84,11 @@ const About: React.FC = () => {
             </div>
             {winner && (
                 <div className="winner-message">
-                    {winner === 'Draw' ? 'It\'s a Draw!' : `Winner: ${winner}`}
+                    {winner === 'Draw' ? "It's a Draw!" : `Winner: ${winner === 'X' ? players.playerX : players.playerO}`}
                 </div>
             )}
-            <button className="reset-button" onClick={resetGame}>
-                Reset Game
-            </button>
-        </React.Fragment>
+            <button onClick={resetGame}>Reset Game</button>
+        </div>
     );
 };
 

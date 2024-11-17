@@ -109,7 +109,6 @@ namespace reactnet.Server.Controllers
             return Ok("Registration successful!");
         }
 
-
         private bool VerifyPassword(string password, string storedHash)
         {
             return BCrypt.Net.BCrypt.Verify(password, storedHash);

@@ -26,30 +26,36 @@
 .board {
     display: grid;
     grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
     gap: 5px;
     margin: 20px auto;
 }
+
 .cell {
-    width: 100px;
-    height: 100px;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 24px;
     border: 1px solid #000;
     cursor: pointer;
+    height: 100px;
+    width: 100px;
 }
-.cell.disabled {
-    pointer-events: none;
-    background-color: #ddd;
-}
+
+    .cell.disabled {
+        pointer-events: none;
+        background-color: #f0f0f0;
+    }
+
 .winner-message {
     font-size: 20px;
     margin: 10px 0;
+    color: green;
 }
+
 .reset-button {
+    margin-top: 20px;
     padding: 10px 20px;
     font-size: 16px;
-    cursor: pointer;
 }
 

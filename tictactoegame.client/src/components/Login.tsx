@@ -19,7 +19,6 @@ const Login = () => {
         });
 
         if (response.ok) {
-            debugger
             const data = await response.json();
             localStorage.setItem('authToken', data.token); // Store the token in local storage
             navigate('/about'); // Navigate to the dashboard or any protected route

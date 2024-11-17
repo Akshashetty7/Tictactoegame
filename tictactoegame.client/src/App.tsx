@@ -13,10 +13,8 @@ function App() {
     const [userLoggedIn, setUserLoggedIn] = useState(false);
 
     useEffect(() => {
-        debugger
         const token = localStorage.getItem('authToken');
         if (token) {
-            debugger
             setUserLoggedIn(true);
         }
     }, []);
