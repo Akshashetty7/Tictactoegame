@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 
-const About = () => {
+const Game = () => {
     const [board, setBoard] = useState(Array(9).fill(null));
     const [isXTurn, setIsXTurn] = useState(true);
     const [winner, setWinner] = useState<string | null>(null);
@@ -92,4 +92,4 @@ const About = () => {
     );
 };
 
-export default About;
+export default Game;

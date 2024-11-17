@@ -8,7 +8,7 @@ const ProtectedRoute = ({ isAuthenticated }) => {
         if (!isAuthenticated) {
             navigate('/login'); // Redirect to login if not authenticated
         } else {
-            navigate('/about'); // Redirect to About if authenticated
+            navigate('/games'); // Redirect to About if authenticated
         }
     }, [isAuthenticated, navigate]);
 

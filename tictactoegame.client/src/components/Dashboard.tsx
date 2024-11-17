@@ -6,8 +6,8 @@ const DashBoard: React.FC = () => {
             <div className="container" style={{ backgroundColor: 'lightblue' }}>
                 <div className="row">
                     <div className="col-md-12">
-                        <h1 className="text" style={{ textAlign: 'center' }}>Welcome to DCS Groups Of Hotels</h1>
-                        <p className="text" style={{ textAlign: 'center' }}>We are ready to serve you</p>
+                        <h1 className="text" style={{ textAlign: 'center' }}>Welcome to  Tic-tac-toe Game</h1>
+                        <p className="text" style={{ textAlign: 'center' }}>Have a great day</p>
                     </div>
                 </div>
             </div>

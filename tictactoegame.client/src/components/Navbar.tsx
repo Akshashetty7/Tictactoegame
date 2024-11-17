@@ -5,7 +5,7 @@ import '../css/Navbar.css';
 const Navbar: React.FC = () => {
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-red">
-            <a className="navbar-brand" href="#">DCS</a>
+            <a className="navbar-brand" href="#"> Tic-tac-toe</a>
             <button
                 className="navbar-toggler"
                 type="button"
@@ -19,17 +19,11 @@ const Navbar: React.FC = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/">Games</Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/Login">Login</Link>
                     </li>
                     <li className="nav-item">
-                        <Link className="nav-link" to="/about">About</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/locations">Locations</Link>
-                    </li>
-                    <li className="nav-item">
-                        <Link className="nav-link" to="/contact">Contact</Link>
+                        <Link className="nav-link" to="/games">Games</Link>
                     </li>
                 </ul>
             </div>

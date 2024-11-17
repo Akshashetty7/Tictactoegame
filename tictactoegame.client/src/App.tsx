@@ -1,13 +1,11 @@
 import Navbar from './components/Navbar';
 import '../src/css/bootstrap.css'
 import { BrowserRouter as Router, Route, Routes, Navigate } from 'react-router-dom';
-import About from '../src/components/About';
+import Game from '../src/components/Game';
 import NotFound from '../src/components/NotFound';
 import DashBoard from '../src/components/Dashboard';
 import React, { useState, useEffect } from 'react';
 import Login from "../src/components/Login";
-
-
 
 function App() {
     const [userLoggedIn, setUserLoggedIn] = useState(false);
@@ -26,11 +24,11 @@ function App() {
                 <Navbar />
                 <div className="content">
                     <Routes>
-                        <Route path="/" element={<Login />} />
-                        <Route path="/login" element={<DashBoard />} />
+                        <Route path="/" element={<DashBoard />} />
+                        <Route path="/login" element={<Login />} />
                         <Route
-                            path="/about"
-                            element={<About />}
+                            path="/games"
+                            element={<Game/>}
                         />
                         <Route path="*" element={<NotFound />} />
                     </Routes>
