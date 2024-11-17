@@ -5,6 +5,16 @@ const About: React.FC = () => {
     const [isXTurn, setIsXTurn] = useState(true); // Track turns
     const [winner, setWinner] = useState<string | null>(null);
 
+    //const token = localStorage.getItem('authToken');
+
+    //const response = await fetch('your-protected-api-url', {
+    //    method: 'GET',
+    //    headers: {
+    //        'Authorization': `Bearer ${token}`,
+    //    },
+    //});
+
+
     const checkWinner = (newBoard: string[]) => {
         const winningCombinations = [
             [0, 1, 2],

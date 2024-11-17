@@ -8,6 +8,13 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowReactApp",
+        builder => builder.WithOrigins("https://localhost:51443")
+                          .AllowAnyMethod()
+                          .AllowAnyHeader());
+});
 // Configure DbContext with retry logic
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -18,7 +25,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
          )));
 
 var app = builder.Build();
-
+app.UseCors("AllowReactApp");
 app.UseDefaultFiles();
 app.UseStaticFiles();
 
