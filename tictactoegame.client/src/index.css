@@ -1,4 +1,4 @@
-:root {
+/*:root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
@@ -11,12 +11,66 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}*/
+:root {
+    /* Font family with fallback options for a modern, readable look */
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    line-height: 1.6; /* Slightly increased line height for better readability */
+    font-weight: 400; /* Normal weight for text, making it easy on the eyes */
+    /* Color scheme for both light and dark modes */
+    color-scheme: light dark;
+    /* Background color as deep gray to complement the black text */
+    background-color: #F5E9DA;
+    /* Deep gray background */
+    color: #000000; /* Pure black text for high contrast */
+    /* Font rendering improvements for smoother text on various screens */
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Enable italicized text for a more elegant, stylish feel */
+    font-style: italic; /* Italicized font style */
+}
+
+/* Additional styles for body or content */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', system-ui, Avenir, Helvetica, Arial, sans-serif;
+    color: #000000; /* Ensure body text is in black */
+    background-color: #D4A29C; /* Dark background color for the entire page */
+    line-height: 1.6; /* Improved readability */
+    font-weight: 400; /* Standard weight for body text */
+}
+
+/* For headings and important text */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Inter', sans-serif;
+  font-style: italic; /* Italicize headings for added emphasis */
+  color: #000000; /* Black color for headings */
+}
+
+/* Button or interactive element styling */
+button {
+    font-family: 'Inter', sans-serif;
+    font-style: italic;
+    font-weight: 600; /* Slightly bolder text for buttons */
+    color: #FFFFFF; /* White text for contrast */
+    background-color: #D4A29C; /* Deep gray background for buttons */
+    border: 2px solid #000000; /* Black border for buttons */
+    padding: 10px 20px; /* Padding for better button size */
+    cursor: pointer;
+    transition: background-color 0.3s ease-in-out;
+}
+
+button:hover {
+  background-color: #333333; /* Lighter shade of gray on hover */
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+    font-weight: 500;
+    /*color: #646cff;*/ color: #8B5E3C;
+    text-decoration: inherit;
 }
 a:hover {
   color: #535bf2;
@@ -55,13 +109,14 @@ button:focus-visible {
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
+    :root {
+        color: #213547;
+        background-color: #E3C6A1;
+    }
+    a:hover {
+        color: #C8A87D;
+      
+    }
   button {
     background-color: #f9f9f9;
   }

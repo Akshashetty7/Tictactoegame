@@ -1,34 +1,119 @@
-
-.navbar {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 1000;
-    background-color: lightblue; /* Black background for the navbar */
-    color: white; /* White text color */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-color: #F5E9DA; /* Full-page background color */
 }
 
-    .navbar a {
-        color: white; /* White color for links inside the navbar */
-    }
-
-        .navbar a:hover {
-            color: lightgray; /* Light gray color for links on hover */
-        }
-
-    .navbar .navbar-brand {
-        color: white; /* Ensure brand name is white */
-    }
-
-    .navbar .navbar-toggler-icon {
-        background-color: white; /* White color for the navbar toggler icon */
-    }
-
-    /* Optional: Adjust padding for better readability */
-    .navbar .navbar-nav .nav-link {
-        padding: 0.5rem 1rem;
-    }
-
-.content {
-    padding-top: 10px;
+.container {
+    padding: 20px; /* Adjust as needed */
 }
+
+/* Style for text inside the container */
+.text {
+    color: #111; /* Dark black color */
+    font-style: italic; /* Italic font */
+}
+
+/* Flexbox container to center content */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Full viewport height */
+}
+
+/* About container for general content */
+.about-container {
+    text-align: center;
+    padding: 20px;
+}
+
+/* Game container that holds the game content */
+/*.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #000;
+    padding: 20px;
+    background-color: #E3C6A1;*/ /* Soft nude brown */
+    /*border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);*/
+    /* New styles */
+    /*font-style: italic;*/ /* Italic text */
+    /*color: #000000;*/ /* Pure black color */
+/*}*/
+
+.game-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    border: 2px solid #000;
+    padding: 20px;
+    background-color: #D4A29C; /* Soft nude brown */
+    border-radius: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-style: italic; /* Italic text */
+    color: #000000; /* Pure black color */
+    width: auto; /* Auto-fit width */
+    height: auto; /* Auto-fit height */
+    max-width: 100%; /* Optional: prevent it from exceeding parent width */
+}
+
+
+
+
+
+/* Game board grid styling */
+.board {
+    display: grid;
+    grid-template-columns: repeat(3, 100px);
+    grid-template-rows: repeat(3, 100px);
+    gap: 5px;
+    margin: 20px auto;
+}
+
+/* Cell styling */
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    border: 1px solid #000;
+    cursor: pointer;
+    height: 100px;
+    width: 100px;
+}
+
+    .cell.disabled {
+        pointer-events: none;
+        background-color: #f0f0f0;
+    }
+
+/* Winner message */
+.winner-message {
+    font-size: 20px;
+    margin: 10px 0;
+    color: green;
+}
+
+/* Reset button styling */
+.reset-button {
+    margin-top: 20px;
+    padding: 5px 10px; /* Reduced padding */
+    font-size: 14px; /* Smaller font size */
+    cursor: pointer;
+    border: 1px solid #007bff;
+    background-color: #007bff;
+    color: white;
+    border-radius: 4px;
+    width: 100px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .reset-button:hover {
+        background-color: #D4A29C;
+        transform: scale(1.05);
+    }

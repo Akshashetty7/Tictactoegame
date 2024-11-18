@@ -64,7 +64,7 @@ const Game = () => {
     };
 
     return (
-        <div>
+        <div className="game-container">
             <h2>Tic Tac Toe Game</h2>
             <div className="players-info">
                 <p>Player X: {players.playerX}</p>
@@ -87,7 +87,7 @@ const Game = () => {
                     {winner === 'Draw' ? "It's a Draw!" : `Winner: ${winner === 'X' ? players.playerX : players.playerO}`}
                 </div>
             )}
-            <button onClick={resetGame}>Reset Game</button>
+            <button className="reset-button" onClick={resetGame}>Reset Game</button>
         </div>
     );
 };

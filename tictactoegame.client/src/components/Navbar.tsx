@@ -19,9 +19,13 @@ const Navbar: React.FC = () => {
             </button>
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ml-auto">
+                <li className="nav-item">
+                    <Link className="nav-link" to="/Register">Register</Link>
+                </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/Login">Login</Link>
                     </li>
+                    
                     <li className="nav-item">
                         <Link className="nav-link" to="/games">Games</Link>
                     </li>
