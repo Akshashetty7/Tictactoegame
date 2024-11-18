@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import '../css/Register.css';
+
 
 const Login = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const [success, setSuccess] = useState(false);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -20,102 +23,50 @@ const Login = () => {
 
         if (response.ok) {
             const data = await response.json();
+            setSuccess(true);
             localStorage.setItem('authToken', data.token);
             navigate('/games');
         } else {
-            const errorData = await response.json();
-            setError(errorData.message || 'Login failed');
+            /*const errorData = await response.json();*/
+            setError('Login failed');
+            navigate('/register');
         }
     };
 
     return (
-        <div style={styles.container}>
-            <div style={styles.formContainer}>
-                <h2 style={styles.title}>Login</h2>
-                <form onSubmit={handleSubmit} style={styles.form}>
-                    <div style={styles.inputGroup}>
-                        <label style={styles.label}>Email:</label>
-                        <input
-                            type="email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            required
-                            style={styles.input}
+
+        <div className="register-container">
+            <h2>Login</h2>
+            {success ? (
+                <p className="success-message">Login successful! Redirecting to Gaming page ...</p>
+            ) : (
+                    <form onSubmit={handleSubmit}>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                            <input
+                             type="email"
+                             value={email}
+                             onChange={(e) => setEmail(e.target.value)}
+                             required
                         />
                     </div>
-                    <div style={styles.inputGroup}>
-                        <label style={styles.label}>Password:</label>
+                    <div className="form-group">
+                        <label htmlFor="password">Password</label>
                         <input
                             type="password"
+                            id="password"
+                            name="password"
                             value={password}
                             onChange={(e) => setPassword(e.target.value)}
                             required
-                            style={styles.input}
                         />
                     </div>
-                    <button type="submit" style={styles.button}>Login</button>
+                    {error && <p className="error-message">{error}</p>}
+                    <button type="submit" className="register-button">Login</button>
                 </form>
-                {error && <p style={styles.error}>{error}</p>}
-            </div>
+            )}
         </div>
     );
-};
-
-const styles = {
-    container: {
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        height: '100vh',
-        backgroundColor: '#f8f9fa',
-        
-    },
-    formContainer: {
-        width: '300px',
-        padding: '20px',
-        backgroundColor: '#ffffff',
-        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
-        borderRadius: '8px',
-        textAlign: 'center',
-    },
-    title: {
-        marginBottom: '20px',
-        fontSize: '24px',
-        color: '#333',
-    },
-    form: {
-        display: 'flex',
-        flexDirection: 'column',
-    },
-    inputGroup: {
-        marginBottom: '15px',
-    },
-    label: {
-        display: 'block',
-        marginBottom: '5px',
-        fontSize: '14px',
-        color: '#555',
-    },
-    input: {
-        width: '100%',
-        padding: '10px',
-        fontSize: '14px',
-        border: '1px solid #ddd',
-        borderRadius: '4px',
-    },
-    button: {
-        padding: '10px',
-        fontSize: '16px',
-        color: '#fff',
-        backgroundColor: '#007bff',
-        border: 'none',
-        borderRadius: '4px',
-        cursor: 'pointer',
-    },
-    error: {
-        marginTop: '15px',
-        color: '#d9534f',
-    },
 };
 
 export default Login;

@@ -72,22 +72,7 @@ namespace reactnet.Server.Controllers
         }
         [HttpPost("register")]
         public  IActionResult Register(RegisterRequest model)
-        {
-            using (var connection = new SqlConnection("Server=.;Database=Tictacgame;TrustServerCertificate=True;MultipleActiveResultSets=true"))
-            {
-                try
-                {
-                    connection.Open();
-                    Console.WriteLine("Database connected successfully!");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Database connection failed: {ex.Message}");
-                }
-            }
-             _context.Database.CanConnect();
-            Console.WriteLine("Database connection successful!");
-            // Check if the username already exists
+        { 
             var existingUser = _context.Users.FirstOrDefault(u => u.Username == model.Email);
             if (existingUser != null)
             {
